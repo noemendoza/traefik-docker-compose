@@ -1,0 +1,41 @@
+#tls:
+#  certificates:
+#    - certFile: /etc/certs/cert/cert.crt
+#      keyFile: /etc/certs/cert/cerrt.key
+#  options:
+#    mtls:
+#      minVersion: VersionTLS12
+#      cipherSuites:
+#        - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+#        - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+#        - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+       
+#http:
+#  routers:
+#    Router-1:
+#      rule: "Host(`example.com`)"
+#      entryPoints:
+#        - "http"
+#        - "https"
+#      service: "docker-registry"
+#      tls:
+#        certResolver: http
+        #    Router-2:
+#     rule = "Host(`example.com`) || (Host(`example.org`) && Path(`/traefik`))"
+#      entryPoints:
+#        - "http"
+#        - "https"
+#      service: "docker-s3-ui"
+#      tls:
+#        certResolver: http
+
+#  services:
+#    docker-registry:
+#      loadBalancer:
+#        servers:
+#            - url: "http://example.com"
+#    docker-s3-ui:
+#     loadBalancer:
+#        servers:
+#            - url: "http://example.com"
+

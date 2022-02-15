@@ -1,0 +1,41 @@
+api:
+  dashboard: true
+
+serversTransport:
+  insecureSkipVerify: true
+
+entryPoints:
+  http:
+    address: ":80"
+  https:
+    address: ":443"
+ 
+  
+providers:
+  docker:
+    endpoint: "unix:///var/run/docker.sock"
+    exposedByDefault: false
+  file:
+    directory: /etc/traefik
+    watch: true
+
+
+certificatesResolvers:
+  http:
+    acme:
+      email: mailaccount@accout.com
+      storage: acme.json
+      httpChallenge:
+        entryPoint: http
+
+log:
+  level: DEBUG
+metrics:
+  prometheus:
+    buckets:
+      - 0.1
+      - 0.3
+      - 1.2
+      - 5.0
+    addEntryPointsLabels: true
+    addServicesLabels: true
